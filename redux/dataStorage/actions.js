@@ -13,10 +13,10 @@ const addDatabaseEntries = ({
 })
 
 const storageActionFailure = ({
-	payload,
+	errorMessage,
 	storageActionId,
 }) => ({
-	payload,
+	errorMessage,
 	storageActionId,
 	type: STORAGE_ACTION_FAILURE,
 })

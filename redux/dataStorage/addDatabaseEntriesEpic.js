@@ -39,9 +39,9 @@ const addDatabaseEntriesEpic = (
 							storageActionId,
 						})),
 						map(storageActionSuccessful),
-						catchEpicError(error => (
+						catchEpicError(errorMessage => (
 							storageActionFailure({
-								error,
+								errorMessage,
 								storageActionId,
 							})
 						)),

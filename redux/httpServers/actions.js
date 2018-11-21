@@ -9,9 +9,11 @@ const addHttpServer = (
 })
 
 const sendResponse = ({
+	errorMessage,
 	message,
 	response,
 }) => ({
+	errorMessage,
 	message: (
 		message
 		|| 'API is working'

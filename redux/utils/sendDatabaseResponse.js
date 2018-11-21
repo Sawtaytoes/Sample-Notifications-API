@@ -23,10 +23,10 @@ const sendDatabaseResponse = ({
 		),
 		ofStorageActionId(storageActionId),
 		map(({
-			error,
+			errorMessage,
 			payload,
 		}) => ({
-			error,
+			errorMessage,
 			message: payload,
 			response,
 		})),
