@@ -12,11 +12,20 @@ const sendResponseEpic = (
 		ofType(SEND_RESPONSE),
 		logMessage('Outgoing'),
 		tap(({
+			errorMessage,
 			message,
 			response,
 		}) => (
-			response
-			.send(message)
+			errorMessage
+			? (
+				response
+				.status(400)
+				.send(errorMessage)
+			)
+			: (
+				response
+				.send(message)
+			)
 		)),
 		ignoreElements(),
 	)
