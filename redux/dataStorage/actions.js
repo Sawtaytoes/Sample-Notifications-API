@@ -1,11 +1,9 @@
 const STORE_DATABASE = 'HTTP_SERVERS::STORE_DATABASE'
 
-const storeDatabase = ({
-	request,
-	response,
-}) => ({
-	request,
-	response,
+const storeDatabase = (
+	database,
+) => ({
+	database,
 	type: STORE_DATABASE,
 })
 
