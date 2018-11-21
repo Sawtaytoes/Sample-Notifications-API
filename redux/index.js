@@ -5,12 +5,18 @@ const { nodeEpic, nodeReducers } = require('@ghadyani-framework/node')
 const { subscriptionsEpic } = require('./subscriptions')
 
 const {
+	dataStorageEpic,
+	dataStorageReducer,
+} = require('./dataStorage')
+
+const {
 	httpServersEpic,
 	httpServersReducer,
 } = require('./httpServers')
 
 const rootEpic = (
 	combineEpics(
+		dataStorageEpic,
 		httpServersEpic,
 		nodeEpic,
 		subscriptionsEpic,
@@ -19,6 +25,7 @@ const rootEpic = (
 
 const rootReducers = {
 	...nodeReducers,
+	dataStorage: dataStorageReducer,
 	httpServers: httpServersReducer,
 }
 
