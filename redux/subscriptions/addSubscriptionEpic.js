@@ -1,4 +1,4 @@
-const { map, mergeMap, take } = require('rxjs/operators')
+const { map, mergeMap } = require('rxjs/operators')
 const { merge, of } = require('rxjs')
 const { ofType } = require('redux-observable')
 
@@ -53,9 +53,6 @@ const addSubscriptionEpic = (
 						})
 					)
 				),
-			)
-			.pipe(
-				take(2),
 			)
 		)),
 	)
