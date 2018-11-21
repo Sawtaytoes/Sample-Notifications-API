@@ -1,18 +1,20 @@
 const { combineEpics } = require('redux-observable')
 
-const addSubscriptionEpic = require('./addSubscriptionEpic')
-const deleteSubscriptionEpic = require('./deleteSubscriptionEpic')
-const deleteSubscriptionsEpic = require('./deleteSubscriptionsEpic')
-const getSubscriptionEpic = require('./getSubscriptionEpic')
+const addUsersSubscriptionEpic = require('./addUsersSubscriptionEpic')
+const deleteUsersSubscriptionEpic = require('./deleteUsersSubscriptionEpic')
+const deleteUsersSubscriptionsEpic = require('./deleteUsersSubscriptionsEpic')
 const getSubscriptionsEpic = require('./getSubscriptionsEpic')
+const getUsersSubscriptionEpic = require('./getUsersSubscriptionEpic')
+const getUsersSubscriptionsEpic = require('./getUsersSubscriptionsEpic')
 
 const subscriptionsEpic = (
 	combineEpics(
-		addSubscriptionEpic,
-		deleteSubscriptionEpic,
-		deleteSubscriptionsEpic,
-		getSubscriptionEpic,
+		addUsersSubscriptionEpic,
+		deleteUsersSubscriptionEpic,
+		deleteUsersSubscriptionsEpic,
 		getSubscriptionsEpic,
+		getUsersSubscriptionEpic,
+		getUsersSubscriptionsEpic,
 	)
 )
 

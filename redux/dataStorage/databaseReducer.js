@@ -2,7 +2,7 @@ const { createReducer } = require('@ghadyani-framework/redux-utils')
 
 const { STORE_DATABASE } = require('./actions')
 
-const initialState = []
+const initialState = null
 
 const reducerActions = {
 	[STORE_DATABASE]: (

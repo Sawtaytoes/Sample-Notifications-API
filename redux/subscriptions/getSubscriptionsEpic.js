@@ -1,10 +1,19 @@
-const { map, mergeMap } = require('rxjs/operators')
-const { merge, of } = require('rxjs')
+const { map } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
-const sendDatabaseResponse = require('$redux/utils/sendDatabaseResponse')
 const { GET_SUBSCRIPTIONS } = require('./actions')
-const { getDatabaseEntries } = require('$redux/dataStorage/actions')
+const { sendResponse } = require('$redux/httpServers/actions')
+
+const hardcodedSubscriptionTypes = [{
+	id: '1',
+	name: 'New Comment',
+}, {
+	id: '2',
+	name: 'Campaign Status Changed',
+}, {
+	id: '3',
+	name: 'New Report Available',
+}]
 
 const getSubscriptionsEpic = (
 	action$,
@@ -13,41 +22,12 @@ const getSubscriptionsEpic = (
 	.pipe(
 		ofType(GET_SUBSCRIPTIONS),
 		map(({
-			request,
 			response,
 		}) => ({
+			message: hardcodedSubscriptionTypes,
 			response,
-			storageActionId: Symbol(),
-			userId: (
-				request
-				.headers['user-id']
-			),
 		})),
-		mergeMap(({
-			response,
-			storageActionId,
-			userId,
-		}) => (
-			merge(
-				(
-					sendDatabaseResponse({
-						action$,
-						storageActionId,
-						response,
-					})
-				),
-				(
-					of(
-						getDatabaseEntries({
-							searchCriteria: {
-								userId,
-							},
-							storageActionId,
-						})
-					)
-				),
-			)
-		)),
+		map(sendResponse),
 	)
 )
 

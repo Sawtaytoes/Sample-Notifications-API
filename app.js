@@ -10,6 +10,7 @@ const { of } = require('rxjs')
 const { tap } = require('rxjs/operators')
 
 const {
+	createDatabase,
 	createHttpServers,
 } = require('./')
 
@@ -49,26 +50,8 @@ epicMiddleware
 
 of(store)
 .pipe(
-	tap(
-		createConfigurationSet({
-			additionalConfigurationSetDefaults: {
-				brickFtpApiKey: '',
-				brickFtpSubdomain: '',
-				smtpCredentials: {
-					host: 'localhost',
-					port: 1025,
-					tls: {
-						rejectUnauthorized: false,
-					},
-				},
-			},
-			environmentVariableConversions: {
-				BRICK_FTP_API_KEY: 'brickFtpApiKey',
-				BRICK_FTP_SUBDOMAIN: 'brickFtpSubdomain',
-				SMTP_CREDENTIALS: 'smtpCredentials',
-			},
-		})
-	),
+	tap(createConfigurationSet({})),
+	tap(createDatabase('usersSubscriptions')),
 	tap(createHttpServers()),
 	tap(
 		runTasks(

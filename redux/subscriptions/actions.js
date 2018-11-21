@@ -1,25 +1,35 @@
-const ADD_SUBSCRIPTION = 'SUBSCRIPTIONS::ADD_SUBSCRIPTION'
-const GET_SUBSCRIPTION = 'SUBSCRIPTIONS::GET_SUBSCRIPTION'
+const ADD_USERS_SUBSCRIPTION = 'SUBSCRIPTIONS::ADD_USERS_SUBSCRIPTION'
+const DELETE_USERS_SUBSCRIPTION = 'SUBSCRIPTIONS::DELETE_USERS_SUBSCRIPTION'
+const DELETE_USERS_SUBSCRIPTIONS = 'SUBSCRIPTIONS::DELETE_USERS_SUBSCRIPTIONS'
 const GET_SUBSCRIPTIONS = 'SUBSCRIPTIONS::GET_SUBSCRIPTIONS'
-const DELETE_SUBSCRIPTION = 'SUBSCRIPTIONS::DELETE_SUBSCRIPTION'
-const DELETE_SUBSCRIPTIONS = 'SUBSCRIPTIONS::DELETE_SUBSCRIPTIONS'
+const GET_USERS_SUBSCRIPTION = 'SUBSCRIPTIONS::GET_USERS_SUBSCRIPTION'
+const GET_USERS_SUBSCRIPTIONS = 'SUBSCRIPTIONS::GET_USERS_SUBSCRIPTIONS'
 
-const addSubscription = ({
+const addUsersSubscription = ({
 	request,
 	response,
 }) => ({
 	request,
 	response,
-	type: ADD_SUBSCRIPTION,
+	type: ADD_USERS_SUBSCRIPTION,
 })
 
-const getSubscription = ({
+const deleteUsersSubscription = ({
 	request,
 	response,
 }) => ({
 	request,
 	response,
-	type: GET_SUBSCRIPTION,
+	type: DELETE_USERS_SUBSCRIPTION,
+})
+
+const deleteUsersSubscriptions = ({
+	request,
+	response,
+}) => ({
+	request,
+	response,
+	type: DELETE_USERS_SUBSCRIPTIONS,
 })
 
 const getSubscriptions = ({
@@ -31,33 +41,35 @@ const getSubscriptions = ({
 	type: GET_SUBSCRIPTIONS,
 })
 
-const deleteSubscription = ({
+const getUsersSubscription = ({
 	request,
 	response,
 }) => ({
 	request,
 	response,
-	type: DELETE_SUBSCRIPTION,
+	type: GET_USERS_SUBSCRIPTION,
 })
 
-const deleteSubscriptions = ({
+const getUsersSubscriptions = ({
 	request,
 	response,
 }) => ({
 	request,
 	response,
-	type: DELETE_SUBSCRIPTIONS,
+	type: GET_USERS_SUBSCRIPTIONS,
 })
 
 module.exports = {
-	ADD_SUBSCRIPTION,
-	addSubscription,
-	GET_SUBSCRIPTION,
+	ADD_USERS_SUBSCRIPTION,
+	addUsersSubscription,
+	DELETE_USERS_SUBSCRIPTION,
+	DELETE_USERS_SUBSCRIPTIONS,
+	deleteUsersSubscription,
+	deleteUsersSubscriptions,
 	GET_SUBSCRIPTIONS,
-	getSubscription,
+	GET_USERS_SUBSCRIPTION,
+	GET_USERS_SUBSCRIPTIONS,
 	getSubscriptions,
-	DELETE_SUBSCRIPTION,
-	DELETE_SUBSCRIPTIONS,
-	deleteSubscription,
-	deleteSubscriptions,
+	getUsersSubscription,
+	getUsersSubscriptions,
 }

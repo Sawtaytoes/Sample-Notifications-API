@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 require('@ghadyani-framework/setup-module-aliases')(__dirname)
 
+const createDatabase = require('$redux/dataStorage/utils/createDatabase')
 const createHttpServers = require('$redux/httpServers/utils/createHttpServers')
 
 const {
@@ -14,6 +15,7 @@ const {
 } = require('$redux/utils/actionTypeCheckers')
 
 module.exports = {
+	createDatabase,
 	createHttpServers,
 	httpServersEpic: rootEpic,
 	httpServersReducers: rootReducers,

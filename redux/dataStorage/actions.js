@@ -1,6 +1,7 @@
 const ADD_DATABASE_ENTRIES = 'DATA_STORAGE::ADD_DATABASE_ENTRIES'
 const DELETE_DATABASE_ENTRIES = 'DATA_STORAGE::DELETE_DATABASE_ENTRIES'
 const GET_DATABASE_ENTRIES = 'DATA_STORAGE::GET_DATABASE_ENTRIES'
+const LOAD_DATABASE = 'DATA_STORAGE::LOAD_DATABASE'
 const STORAGE_ACTION_FAILURE = 'DATA_STORAGE::STORAGE_ACTION_FAILURE'
 const STORAGE_ACTION_SUCCESSFUL = 'DATA_STORAGE::STORAGE_ACTION_SUCCESSFUL'
 const STORE_DATABASE = 'DATA_STORAGE::STORE_DATABASE'
@@ -30,6 +31,13 @@ const getDatabaseEntries = ({
 	searchCriteria,
 	storageActionId,
 	type: GET_DATABASE_ENTRIES,
+})
+
+const loadDatabase = (
+	databaseName,
+) => ({
+	databaseName,
+	type: LOAD_DATABASE,
 })
 
 const storageActionFailure = ({
@@ -64,6 +72,8 @@ module.exports = {
 	deleteDatabaseEntries,
 	GET_DATABASE_ENTRIES,
 	getDatabaseEntries,
+	LOAD_DATABASE,
+	loadDatabase,
 	STORAGE_ACTION_FAILURE,
 	STORAGE_ACTION_SUCCESSFUL,
 	storageActionFailure,

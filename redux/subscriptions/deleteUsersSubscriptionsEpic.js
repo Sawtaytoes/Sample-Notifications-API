@@ -3,26 +3,21 @@ const { merge, of } = require('rxjs')
 const { ofType } = require('redux-observable')
 
 const sendDatabaseResponse = require('$redux/utils/sendDatabaseResponse')
-const { GET_SUBSCRIPTION } = require('./actions')
-const { getDatabaseEntries } = require('$redux/dataStorage/actions')
+const { DELETE_USERS_SUBSCRIPTIONS } = require('./actions')
+const { deleteDatabaseEntries } = require('$redux/dataStorage/actions')
 
-const getSubscriptionEpic = (
+const deleteUsersSubscriptionsEpic = (
 	action$,
 ) => (
 	action$
 	.pipe(
-		ofType(GET_SUBSCRIPTION),
+		ofType(DELETE_USERS_SUBSCRIPTIONS),
 		map(({
 			request,
 			response,
 		}) => ({
 			response,
 			storageActionId: Symbol(),
-			subscriptionId: (
-				request
-				.params
-				.subscriptionId
-			),
 			userId: (
 				request
 				.headers['user-id']
@@ -31,7 +26,6 @@ const getSubscriptionEpic = (
 		mergeMap(({
 			response,
 			storageActionId,
-			subscriptionId,
 			userId,
 		}) => (
 			merge(
@@ -44,9 +38,9 @@ const getSubscriptionEpic = (
 				),
 				(
 					of(
-						getDatabaseEntries({
+						deleteDatabaseEntries({
+							namespace: 'usersSubscriptions',
 							searchCriteria: {
-								subscriptionId,
 								userId,
 							},
 							storageActionId,
@@ -58,4 +52,4 @@ const getSubscriptionEpic = (
 	)
 )
 
-module.exports = getSubscriptionEpic
+module.exports = deleteUsersSubscriptionsEpic

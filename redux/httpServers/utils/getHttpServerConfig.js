@@ -3,11 +3,12 @@ const express = require('express')
 const { sendResponse } = require('../actions')
 
 const {
-	addSubscription,
-	deleteSubscription,
-	deleteSubscriptions,
-	getSubscription,
+	addUsersSubscription,
+	deleteUsersSubscription,
+	deleteUsersSubscriptions,
 	getSubscriptions,
+	getUsersSubscription,
+	getUsersSubscriptions,
 } = require('$redux/subscriptions/actions')
 
 const getHttpServerConfig = (
@@ -30,38 +31,34 @@ const getHttpServerConfig = (
 			getSubscriptions
 		),
 	)
-	.get(
-		'/subscriptions/:subscriptionId',
+	.delete(
+		'/users/subscriptions',
 		dispatchableRequest(
-			getSubscription
+			deleteUsersSubscriptions
+		),
+	)
+	.delete(
+		'/users/subscriptions/:subscriptionId',
+		dispatchableRequest(
+			deleteUsersSubscription
+		),
+	)
+	.get(
+		'/users/subscriptions',
+		dispatchableRequest(
+			getUsersSubscriptions
+		),
+	)
+	.get(
+		'/users/subscriptions/:subscriptionId',
+		dispatchableRequest(
+			getUsersSubscription
 		),
 	)
 	.post(
-		'/subscriptions',
+		'/users/subscriptions',
 		dispatchableRequest(
-			addSubscription
-		),
-	)
-
-	// Subscriptions may require updates such as changing how often to be notified.
-	// In this PoC, I've opted to exclude this functionality as it adds a significant amount of scope-creep.
-	// .put(
-	// 	'/subscriptions/:subscriptionId',
-	// 	dispatchableRequest(
-	// 		updateSubscription
-	// 	),
-	// )
-
-	.delete(
-		'/subscriptions',
-		dispatchableRequest(
-			deleteSubscriptions
-		),
-	)
-	.delete(
-		'/subscriptions/:subscriptionId',
-		dispatchableRequest(
-			deleteSubscription
+			addUsersSubscription
 		),
 	)
 )
