@@ -1,11 +1,13 @@
 const { combineEpics } = require('redux-observable')
 const { combineReducers } = require('redux')
 
+const addDatabaseEntriesEpic = require('./addDatabaseEntriesEpic')
 const createDatabaseEpic = require('./createDatabaseEpic')
 const databaseReducer = require('./databaseReducer')
 
 const dataStorageEpic = (
 	combineEpics(
+		addDatabaseEntriesEpic,
 		createDatabaseEpic,
 	)
 )
