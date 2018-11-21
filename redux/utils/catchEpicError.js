@@ -1,13 +1,24 @@
 const { catchError } = require('rxjs/operators')
-const { NEVER } = require('rxjs')
+const { NEVER, of } = require('rxjs')
 
 const logError = require('$redux/utils/logError')
 
-const catchEpicError = () => (
+const catchEpicError = (
+	errorActionCreator,
+) => (
 	catchError(error => {
 		logError(error)
 
-		return NEVER
+		return (
+			NEVER
+			|| (
+				of(
+					errorActionCreator(
+						error,
+					)
+				)
+			)
+		)
 	})
 )
 
