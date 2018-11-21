@@ -8,7 +8,6 @@ const createDispatchableRequest = (
 ) => (
 	request,
 	response,
-	next,
 ) => {
 	dispatch(
 		action({
@@ -16,8 +15,6 @@ const createDispatchableRequest = (
 			response,
 		})
 	)
-
-	next()
 }
 
 const createHttpServers = () => (
