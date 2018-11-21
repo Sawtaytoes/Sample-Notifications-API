@@ -9,7 +9,7 @@ const { START_TASK } = require('@ghadyani-framework/node/redux/tasks/actions')
 const { stateSelector } = require('@ghadyani-framework/redux-utils')
 
 const getServerUrl = require('./utils/getServerUrl')
-const logError = require('./utils/logError')
+const logError = require('$redux/utils/logError')
 const { httpServerSelector } = require('./selectors')
 
 const configurationSetProps = {
