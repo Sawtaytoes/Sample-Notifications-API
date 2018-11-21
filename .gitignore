@@ -3,6 +3,7 @@ localConfig.js
 
 # Generated
 .eslintcache
+.nedb
 public/bundles
 
 # Logs
