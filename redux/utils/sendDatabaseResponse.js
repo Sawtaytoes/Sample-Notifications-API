@@ -1,5 +1,4 @@
 const { map } = require('rxjs/operators')
-const { merge } = require('rxjs')
 const { ofType } = require('redux-observable')
 
 const ofStorageActionId = require('$redux/utils/ofStorageActionId')
