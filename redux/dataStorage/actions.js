@@ -1,4 +1,5 @@
 const ADD_DATABASE_ENTRIES = 'DATA_STORAGE::ADD_DATABASE_ENTRIES'
+const DELETE_DATABASE_ENTRIES = 'DATA_STORAGE::DELETE_DATABASE_ENTRIES'
 const GET_DATABASE_ENTRIES = 'DATA_STORAGE::GET_DATABASE_ENTRIES'
 const STORAGE_ACTION_FAILURE = 'DATA_STORAGE::STORAGE_ACTION_FAILURE'
 const STORAGE_ACTION_SUCCESSFUL = 'DATA_STORAGE::STORAGE_ACTION_SUCCESSFUL'
@@ -11,6 +12,15 @@ const addDatabaseEntries = ({
 	entries,
 	storageActionId,
 	type: ADD_DATABASE_ENTRIES,
+})
+
+const deleteDatabaseEntries = ({
+	searchCriteria,
+	storageActionId,
+}) => ({
+	searchCriteria,
+	storageActionId,
+	type: DELETE_DATABASE_ENTRIES,
 })
 
 const getDatabaseEntries = ({
@@ -50,6 +60,8 @@ const storeDatabase = (
 module.exports = {
 	ADD_DATABASE_ENTRIES,
 	addDatabaseEntries,
+	DELETE_DATABASE_ENTRIES,
+	deleteDatabaseEntries,
 	GET_DATABASE_ENTRIES,
 	getDatabaseEntries,
 	STORAGE_ACTION_FAILURE,
