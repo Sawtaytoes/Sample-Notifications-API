@@ -1,3 +1,4 @@
+const cors = require('cors')
 const express = require('express')
 
 const { sendResponse } = require('../actions')
@@ -15,6 +16,7 @@ const getHttpServerConfig = (
 	dispatchableRequest,
 ) => (
 	express()
+	.use(cors())
 	.use(
 		express
 		.json()
