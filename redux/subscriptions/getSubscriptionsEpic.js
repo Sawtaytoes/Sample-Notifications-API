@@ -15,14 +15,9 @@ const getSubscriptionsEpic = (
 		map(({
 			request,
 			response,
-		}) => (console.log(request.query)||{
+		}) => ({
 			response,
 			storageActionId: Symbol(),
-			subscriptionId: (
-				request
-				.params
-				.subscriptionId
-			),
 			userId: (
 				request
 				.headers['user-id']
@@ -31,7 +26,6 @@ const getSubscriptionsEpic = (
 		mergeMap(({
 			response,
 			storageActionId,
-			subscriptionId,
 			userId,
 		}) => (
 			merge(
@@ -46,7 +40,6 @@ const getSubscriptionsEpic = (
 					of(
 						getDatabaseEntries({
 							searchCriteria: {
-								subscriptionId,
 								userId,
 							},
 							storageActionId,
