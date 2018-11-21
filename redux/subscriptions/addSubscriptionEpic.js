@@ -19,9 +19,11 @@ const addSubscriptionEpic = (
 			response,
 			storageActionId: Symbol(),
 			subscriptionId: (
-				request
-				.body
-				.subscriptionId
+				String(
+					request
+					.body
+					.subscriptionId
+				)
 			),
 			userId: (
 				request
