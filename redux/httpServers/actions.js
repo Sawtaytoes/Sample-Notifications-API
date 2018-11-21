@@ -12,7 +12,10 @@ const sendResponse = ({
 	message,
 	response,
 }) => ({
-	message: message || 'API is working',
+	message: (
+		message
+		|| 'API is working'
+	),
 	response,
 	type: SEND_RESPONSE,
 })
