@@ -1,8 +1,8 @@
 const ADD_SUBSCRIPTION = 'SUBSCRIPTIONS::ADD_SUBSCRIPTION'
 const GET_SUBSCRIPTION = 'SUBSCRIPTIONS::GET_SUBSCRIPTION'
 const GET_SUBSCRIPTIONS = 'SUBSCRIPTIONS::GET_SUBSCRIPTIONS'
-const REMOVE_SUBSCRIPTION = 'SUBSCRIPTIONS::REMOVE_SUBSCRIPTION'
-const REMOVE_SUBSCRIPTIONS = 'SUBSCRIPTIONS::REMOVE_SUBSCRIPTIONS'
+const DELETE_SUBSCRIPTION = 'SUBSCRIPTIONS::DELETE_SUBSCRIPTION'
+const DELETE_SUBSCRIPTIONS = 'SUBSCRIPTIONS::DELETE_SUBSCRIPTIONS'
 
 const addSubscription = ({
 	request,
@@ -31,22 +31,22 @@ const getSubscriptions = ({
 	type: GET_SUBSCRIPTIONS,
 })
 
-const removeSubscription = ({
+const deleteSubscription = ({
 	request,
 	response,
 }) => ({
 	request,
 	response,
-	type: REMOVE_SUBSCRIPTION,
+	type: DELETE_SUBSCRIPTION,
 })
 
-const removeSubscriptions = ({
+const deleteSubscriptions = ({
 	request,
 	response,
 }) => ({
 	request,
 	response,
-	type: REMOVE_SUBSCRIPTIONS,
+	type: DELETE_SUBSCRIPTIONS,
 })
 
 module.exports = {
@@ -56,8 +56,8 @@ module.exports = {
 	GET_SUBSCRIPTIONS,
 	getSubscription,
 	getSubscriptions,
-	REMOVE_SUBSCRIPTION,
-	REMOVE_SUBSCRIPTIONS,
-	removeSubscription,
-	removeSubscriptions,
+	DELETE_SUBSCRIPTION,
+	DELETE_SUBSCRIPTIONS,
+	deleteSubscription,
+	deleteSubscriptions,
 }

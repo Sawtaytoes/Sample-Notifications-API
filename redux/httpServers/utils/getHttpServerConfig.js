@@ -4,10 +4,10 @@ const { sendResponse } = require('../actions')
 
 const {
 	addSubscription,
+	deleteSubscription,
+	deleteSubscriptions,
 	getSubscription,
 	getSubscriptions,
-	removeSubscription,
-	removeSubscriptions,
 } = require('$redux/subscriptions/actions')
 
 const getHttpServerConfig = (
@@ -55,13 +55,13 @@ const getHttpServerConfig = (
 	.delete(
 		'/subscriptions',
 		dispatchableRequest(
-			removeSubscriptions
+			deleteSubscriptions
 		),
 	)
 	.delete(
 		'/subscriptions/:subscriptionId',
 		dispatchableRequest(
-			removeSubscription
+			deleteSubscription
 		),
 	)
 )
