@@ -2,8 +2,8 @@
 localConfig.js
 
 # Generated
+*.db
 .eslintcache
-.nedb
 public/bundles
 
 # Logs

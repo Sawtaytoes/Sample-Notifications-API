@@ -28,7 +28,7 @@ const createDatabaseEpic = (
 		),
 		tap(() => {
 			const database = (
-				new Datastore({
+					filename: 'subscriptions.db',
 					filename: '.nedb',
 				})
 			)
