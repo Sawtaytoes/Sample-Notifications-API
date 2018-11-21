@@ -2,6 +2,8 @@ const { combineEpics } = require('redux-observable')
 const { combineReducers } = require('redux')
 const { nodeEpic, nodeReducers } = require('@ghadyani-framework/node')
 
+const { subscriptionsEpic } = require('./subscriptions')
+
 const {
 	httpServersEpic,
 	httpServersReducer,
@@ -11,6 +13,7 @@ const rootEpic = (
 	combineEpics(
 		httpServersEpic,
 		nodeEpic,
+		subscriptionsEpic,
 	)
 )
 

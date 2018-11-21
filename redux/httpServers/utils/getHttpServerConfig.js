@@ -1,9 +1,14 @@
 const express = require('express')
 
+const { sendResponse } = require('../actions')
+
 const {
-	getTest,
-	sendResponse,
-} = require('../actions')
+	addSubscription,
+	getSubscription,
+	getSubscriptions,
+	removeSubscription,
+	removeSubscriptions,
+} = require('$redux/subscriptions/actions')
 
 const getHttpServerConfig = (
 	dispatchableRequest,
@@ -22,19 +27,19 @@ const getHttpServerConfig = (
 	.get(
 		'/subscriptions',
 		dispatchableRequest(
-			getTest
+			getSubscriptions
 		),
 	)
 	.get(
 		'/subscriptions/:subscriptionId',
 		dispatchableRequest(
-			getTest
+			getSubscription
 		),
 	)
 	.post(
 		'/subscriptions',
 		dispatchableRequest(
-			getTest
+			addSubscription
 		),
 	)
 
@@ -50,13 +55,13 @@ const getHttpServerConfig = (
 	.delete(
 		'/subscriptions',
 		dispatchableRequest(
-			getTest
+			removeSubscriptions
 		),
 	)
 	.delete(
 		'/subscriptions/:subscriptionId',
 		dispatchableRequest(
-			getTest
+			removeSubscription
 		),
 	)
 )
