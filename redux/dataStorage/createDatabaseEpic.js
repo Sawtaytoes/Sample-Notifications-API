@@ -20,7 +20,7 @@ const createDatabaseEpic = (
 		),
 		map(() => (
 			new Datastore({
-				filename: 'subscriptions.db',
+				filename: 'userSubscriptions.db',
 			})
 		)),
 		switchMap(database => (
